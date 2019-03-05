@@ -1,0 +1,15 @@
+.dataTables_filter{
+    text-align: right;
+}
+
+.dataTables_filter input{
+    margin-left: 8px;
+}
+
+.dataTables_paginate{
+    text-align: right;
+}
+
+.dataTables_paginate ul{
+    margin: 0;
+}

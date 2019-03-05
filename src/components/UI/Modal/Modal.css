@@ -1,0 +1,49 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 70%;
+    border: 1px solid #ccc;
+    left: 15%;
+    top: 10%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
+
+.modalHeader{
+    padding: 15px;
+    border-bottom: 0px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: Etisalat;
+    letter-spacing: 2px;
+    background: rgb(98,136,234);
+    background: -webkit-linear-gradient(left, rgba(98,136,234,1) 0%,rgba(46,204,221,1) 100%);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(98,136,234,1)),to(rgba(46,204,221,1)));
+    background: -o-linear-gradient(left, rgba(98,136,234,1) 0%,rgba(46,204,221,1) 100%);
+    background: linear-gradient(to right, rgba(98,136,234,1) 0%,rgba(46,204,221,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6288ea', endColorstr='#2eccdd',GradientType=1 );
+    color: #fff;
+    display: flex;
+    justify-content: space-between
+}
+
+.modalHeader h1{
+    font-size: 15px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+.modalBody{
+    padding: 15px;
+    height: 570px;
+    overflow-y: auto;
+}
+
+@media (min-width: 600px) {
+    .Modal {
+        width: 700px;
+        left: calc(50% - 350px);
+    }
+}
