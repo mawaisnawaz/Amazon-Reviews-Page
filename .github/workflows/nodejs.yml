@@ -1,4 +1,4 @@
-name: Node CI
+name: Develop CI/CD
 
 on: [push]
 
@@ -17,7 +17,32 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build
-      run: |
-        npm ci
-        npm run build --if-present
+    - name: yarn install
+      run: npm install
+    - name: npm build
+      run: npm build --if-present
+      env:
+        CI_CD: true
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: dist
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:cofe-order-queue-dev
+        env:
+          FIREBASE_TOKEN: ${{ secrets.firebase_token }}
+          PROJECT_ID: cofe-dev
