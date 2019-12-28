@@ -20,7 +20,7 @@ jobs:
     - name: yarn install
       run: npm install
     - name: npm build
-      run: npm build --if-present
+      run: npm run build
       env:
         CI_CD: true
     - name: Archive Production Artifact
